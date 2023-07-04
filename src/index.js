@@ -3,11 +3,52 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Home from './Home.tsx';
+import JobDescription from './JobDescription';
+import AnimationPage from './AnimationPage';
+
+
+import Header from './Header';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <div>
+        <Header />
+        <AnimationPage />
+      </div>
+    ),
+  },
+  {
+    path: "/home",
+    element: (
+      <div>
+        <Header />
+        <Home />
+      </div>
+    ),
+  },
+  {
+    path: "/home/*",
+    element: (
+      <div>
+        <Header />
+        <JobDescription />
+      </div>
+    ),
+  },
+]);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
